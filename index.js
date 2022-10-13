@@ -96,7 +96,10 @@ app.get("*", (req, res) => {
 });
 
 mongoose
-  .connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .connect(
+    "mongodb+srv://Kaito-Kido:Superkid2k1@cluster0.qrjtlyo.mongodb.net/?retryWrites=true&w=majority",
+    { useNewUrlParser: true, useUnifiedTopology: true }
+  )
   .then(() => {
     console.log("Connect to DB");
     server.listen(PORT, () => {
