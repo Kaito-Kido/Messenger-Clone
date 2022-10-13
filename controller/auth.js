@@ -30,23 +30,23 @@ export const login = async (req, res) => {
       const dbPassword = user.password;
       const match = await compare(req.body.password, dbPassword);
       if (match) {
-        const accessToken = createToken(user);
-        const refreshToken = createRefreshToken(user);
-        const newToken = { refreshToken: refreshToken };
-        await UserModel.findOneAndUpdate({ _id: user._id }, newToken, {
-          new: true,
-        });
-        res.cookie("accessToken", accessToken, {
-          maxAge: 15000000,
-          sameSite: "None",
-          secure: true,
-        });
-        res.cookie("refreshToken", refreshToken, {
-          maxAge: 3600000,
-          sameSite: "None",
-          secure: true,
-        });
-        res.status(200).json({ id: user._id, username: user.username });
+        // const accessToken = createToken(user);
+        // const refreshToken = createRefreshToken(user);
+        // const newToken = { refreshToken: refreshToken };
+        // await UserModel.findOneAndUpdate({ _id: user._id }, newToken, {
+        //   new: true,
+        // });
+        // res.cookie("accessToken", accessToken, {
+        //   maxAge: 15000000,
+        //   sameSite: "None",
+        //   secure: true,
+        // });
+        // res.cookie("refreshToken", refreshToken, {
+        //   maxAge: 3600000,
+        //   sameSite: "None",
+        //   secure: true,
+        // });
+        res.status(200).json({ id: user._id });
       } else res.status(400).json("Wrong password");
     } else {
       res.status(400).json("Username doesn't exist");
