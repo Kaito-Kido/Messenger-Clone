@@ -1,6 +1,10 @@
 {
   "name": "server",
   "version": "1.0.0",
+  "engines": {
+    "node": "16.16.0",
+    "npm": "8.17.0"
+  },
   "description": "",
   "main": "index.js",
   "type": "module",
@@ -9,7 +13,7 @@
     "server": "nodemon",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "build": "npm run build --prefix client"
+    "build": "cd client && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
@@ -26,8 +30,5 @@
     "mongoose": "^6.5.2",
     "nodemon": "^2.0.19",
     "socket.io": "^4.5.1"
-  },
-  "engines": {
-    "node": "16.16.0"
   }
 }
