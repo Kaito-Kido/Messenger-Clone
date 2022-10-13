@@ -36,16 +36,16 @@ export const login = async (req, res) => {
         await UserModel.findOneAndUpdate({ _id: user._id }, newToken, {
           new: true,
         });
-        res.cookie("accessToken", accessToken, {
-          maxAge: 15000000,
-          sameSite: "None",
-          secure: true,
-        });
-        res.cookie("refreshToken", refreshToken, {
-          maxAge: 3600000,
-          sameSite: "None",
-          secure: true,
-        });
+        // res.cookie("accessToken", accessToken, {
+        //   maxAge: 15000000,
+        //   sameSite: "None",
+        //   secure: true,
+        // });
+        // res.cookie("refreshToken", refreshToken, {
+        //   maxAge: 3600000,
+        //   sameSite: "None",
+        //   secure: true,
+        // });
         res.status(200).json({ id: user._id, username: user.username });
       } else res.status(400).json("Wrong password");
     } else {
