@@ -38,13 +38,11 @@ export const login = async (req, res) => {
         });
         res.cookie("accessToken", accessToken, {
           maxAge: 15000000,
-          httpOnly: true,
           sameSite: "None",
           secure: true,
         });
         res.cookie("refreshToken", refreshToken, {
           maxAge: 3600000,
-          httpOnly: true,
           sameSite: "None",
           secure: true,
         });
