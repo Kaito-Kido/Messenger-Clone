@@ -23,6 +23,7 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
+  console.log(res);
   try {
     const user = await UserModel.findOne({ username: req.body.username });
     if (user) {
