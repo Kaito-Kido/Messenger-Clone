@@ -25,7 +25,7 @@ const server = http.createServer(app);
 const io = new Server(server, {
   pingTimeout: 60000,
   cors: {
-    origin: ["http://localhost:3000", "http://192.168.116.138:3000"],
+    origin: ["https://my-mess-clone.herokuapp.com/"],
     credentials: true,
   },
 });
@@ -35,7 +35,7 @@ app.use(bodyParser.json({ limit: "30mb" }));
 app.use(bodyParser.urlencoded({ limit: "30mb" }));
 app.use(
   cors({
-    origin: ["http://localhost:3000", "http://192.168.116.138:3000"],
+    origin: ["https://my-mess-clone.herokuapp.com/"],
     credentials: true,
   })
 );
@@ -96,10 +96,7 @@ app.get("*", (req, res) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://Kaito-Kido:Superkid2k1@cluster0.qrjtlyo.mongodb.net/?retryWrites=true&w=majority",
-    { useNewUrlParser: true, useUnifiedTopology: true }
-  )
+  .connect(process.env.URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log("Connect to DB");
     server.listen(PORT, () => {
