@@ -33,6 +33,7 @@ const Login = () => {
       if (res.status === 200) {
         setIsLoading(false);
         userLogin(res.data);
+        console.log(res.data);
         await localStorage.setItem("user", JSON.stringify(res.data));
         navigate("/");
       }
